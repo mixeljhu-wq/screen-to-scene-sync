@@ -13,7 +13,7 @@ export function ContactHero() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/80 hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center mb-4">
               <Mail className="w-6 h-6 text-white" />
             </div>
@@ -26,7 +26,7 @@ export function ContactHero() {
             </a>
           </div>
 
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/80 hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mb-4">
               <Phone className="w-6 h-6 text-white" />
             </div>
@@ -39,7 +39,7 @@ export function ContactHero() {
             </a>
           </div>
 
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/80 hover:shadow-xl transition-shadow">
             <div className="flex gap-3 mb-4">
               <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-violet-500 rounded-full flex items-center justify-center">
                 <Instagram className="w-6 h-6 text-white" />

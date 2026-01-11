@@ -29,7 +29,7 @@ export function ContactForm() {
   return (
     <section className="px-6 py-16">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/40">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/80">
           <div className="text-center mb-8">
             <h2 className="mb-3">Send Us a Message</h2>
             <p className="text-muted-foreground">
