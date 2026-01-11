@@ -1,98 +1,82 @@
-import React from 'react';
-import { Facebook, Twitter, Instagram } from 'lucide-react';
+import { Heart, Instagram, Facebook, Twitter } from 'lucide-react';
 
-interface FooterSectionProps {
-  title: string;
-  links: string[];
-}
-
-const FooterSection: React.FC<FooterSectionProps> = ({ title, links }) => {
+export function Footer() {
   return (
-    <div>
-      <h4 className="text-foreground text-base font-medium mb-4">{title}</h4>
-      <ul className="space-y-2">
-        {links.map((link, index) => (
-          <li key={index}>
-            <a 
-              href="#" 
-              className="text-muted-foreground text-base hover:text-foreground transition-colors"
-            >
-              {link}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const Footer: React.FC = () => {
-  return (
-    <footer className="w-full max-w-[1280px] mx-auto px-6 mt-20 pb-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-        {/* Brand Column */}
-        <div>
-          <div className="flex items-center gap-2 mb-4">
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 2L4 8V24L16 30L28 24V8L16 2Z" stroke="currentColor" strokeWidth="2" fill="none"/>
-              <path d="M16 10L10 13V19L16 22L22 19V13L16 10Z" fill="currentColor"/>
-            </svg>
-            <span className="text-xl font-normal tracking-tight text-foreground">
-              Engraved Moments
-            </span>
+    <footer className="relative py-16 px-6 mt-24">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 mb-12">
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Heart className="w-6 h-6 text-rose-600 fill-rose-600" />
+              <span className="text-xl tracking-tight">Engraved Moments</span>
+            </div>
+            <p className="text-gray-600">
+              Transforming memories into timeless treasures since 2020
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 bg-white/60 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-rose-100 transition-colors">
+                <Instagram className="w-5 h-5 text-gray-700" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/60 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-purple-100 transition-colors">
+                <Facebook className="w-5 h-5 text-gray-700" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/60 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-amber-100 transition-colors">
+                <Twitter className="w-5 h-5 text-gray-700" />
+              </a>
+            </div>
           </div>
-          <p className="text-muted-foreground text-base leading-6 mb-4">
-            Transforming memories into timeless treasures since 2020
-          </p>
-          <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 bg-white/60 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a href="#" className="w-10 h-10 bg-white/60 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a href="#" className="w-10 h-10 bg-white/60 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-              <Instagram className="w-5 h-5" />
-            </a>
+
+          {/* Products */}
+          <div>
+            <h4 className="text-gray-900 mb-4">Products</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Necklaces</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Keychains</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Bracelets</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Rings</a></li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="text-gray-900 mb-4">Support</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">FAQ</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Shipping Info</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Returns</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Contact Us</a></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-gray-900 mb-4">Company</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">About Us</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Our Story</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Testimonials</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Careers</a></li>
+            </ul>
           </div>
         </div>
-        
-        <FooterSection 
-          title="Products" 
-          links={["Necklaces", "Keychains", "Bracelets", "Rings"]} 
-        />
-        
-        <FooterSection 
-          title="Support" 
-          links={["FAQ", "Shipping Info", "Returns", "Contact Us"]} 
-        />
-        
-        <FooterSection 
-          title="Company" 
-          links={["About Us", "Our Story", "Testimonials", "Careers"]} 
-        />
-      </div>
-      
-      <div className="border-t border-border pt-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
-            © 2025 Engraved Moments. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-muted-foreground text-sm hover:text-foreground transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-muted-foreground text-sm hover:text-foreground transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="text-muted-foreground text-sm hover:text-foreground transition-colors">
-              Cookie Policy
-            </a>
+
+        {/* Bottom */}
+        <div className="pt-8 border-t border-gray-300">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-600 text-sm">
+              © 2025 Engraved Moments. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Privacy Policy</a>
+              <a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Terms of Service</a>
+              <a href="#" className="text-gray-600 hover:text-rose-600 transition-colors">Cookie Policy</a>
+            </div>
           </div>
         </div>
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

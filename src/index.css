@@ -4,71 +4,68 @@
 
 @layer base {
   :root {
+    --font-size: 16px;
     --background: 0 0% 100%;
-    --foreground: 0 0% 5%;
+    --foreground: 0 0% 9%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 5%;
+    --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5%;
-    --primary: 277 94% 52%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 240 6% 5%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 243 4% 48%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 48%;
-    --accent: 349 100% 46%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
+    --secondary: 264 3% 93%;
+    --secondary-foreground: 240 6% 5%;
+    --muted: 240 6% 94%;
+    --muted-foreground: 240 4% 47%;
+    --accent: 220 6% 93%;
+    --accent-foreground: 240 6% 5%;
+    --destructive: 349 82% 46%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 277 94% 52%;
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 0 0% 0% / 0.1;
+    --input: 0 0% 0% / 0;
+    --input-background: 240 5% 96%;
+    --ring: 0 0% 44%;
+    --radius: 0.625rem;
     
-    /* Custom brand colors */
-    --brand-purple: 277 94% 52%;
-    --brand-red: 349 100% 46%;
-    --brand-orange: 30 100% 44%;
-    --text-primary: 218 17% 27%;
-    --text-secondary: 240 5% 48%;
+    /* Sidebar */
+    --sidebar-background: 0 0% 97%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 240 6% 5%;
+    --sidebar-primary-foreground: 0 0% 97%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 13%;
+    --sidebar-border: 0 0% 91%;
+    --sidebar-ring: 0 0% 44%;
   }
 
   .dark {
-    --background: 0 0% 5%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 277 94% 52%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 243 4% 48%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 349 100% 46%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 277 94% 52%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 0 0% 9%;
+    --foreground: 0 0% 97%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 97%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 97%;
+    --primary: 0 0% 97%;
+    --primary-foreground: 0 0% 13%;
+    --secondary: 0 0% 17%;
+    --secondary-foreground: 0 0% 97%;
+    --muted: 0 0% 17%;
+    --muted-foreground: 0 0% 44%;
+    --accent: 0 0% 17%;
+    --accent-foreground: 0 0% 97%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 86% 60%;
+    --border: 0 0% 17%;
+    --input: 0 0% 17%;
+    --ring: 0 0% 27%;
+    --sidebar-background: 0 0% 13%;
+    --sidebar-foreground: 0 0% 97%;
+    --sidebar-primary: 264 78% 48%;
+    --sidebar-primary-foreground: 0 0% 97%;
+    --sidebar-accent: 0 0% 17%;
+    --sidebar-accent-foreground: 0 0% 97%;
+    --sidebar-border: 0 0% 17%;
+    --sidebar-ring: 0 0% 27%;
   }
 }
 
@@ -76,8 +73,34 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  h1 {
+    @apply text-2xl font-medium leading-relaxed;
+  }
+
+  h2 {
+    @apply text-xl font-medium leading-relaxed;
+  }
+
+  h3 {
+    @apply text-lg font-medium leading-relaxed;
+  }
+
+  h4 {
+    @apply text-base font-medium leading-relaxed;
+  }
+
+  label {
+    @apply text-base font-medium leading-relaxed;
+  }
+}
+
+html {
+  font-size: var(--font-size);
 }

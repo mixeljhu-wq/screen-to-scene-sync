@@ -1,139 +1,138 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Send } from 'lucide-react';
 
-interface FormData {
-  fullName: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    fullName: '',
+export function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
     email: '',
     subject: '',
     message: ''
   });
+  const [submitted, setSubmitted] = useState(false);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }, 3000);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
-    
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
-      fullName: '',
-      email: '',
-      subject: '',
-      message: ''
+      ...formData,
+      [e.target.name]: e.target.value
     });
-    
-    setIsSubmitting(false);
   };
 
   return (
-    <section className="w-full max-w-[768px] mx-auto px-6 mt-20">
-      <div className="bg-white/60 backdrop-blur-sm shadow-xl border border-white/40 rounded-2xl p-12">
-        <div className="text-center mb-8">
-          <h2 className="text-foreground text-xl font-medium">Send Us a Message</h2>
-          <p className="text-muted-foreground text-base mt-3">
-            Fill out the form below and we'll get back to you within 24 hours
-          </p>
+    <section className="px-6 py-16">
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/40">
+          <div className="text-center mb-8">
+            <h2 className="mb-3">Send Us a Message</h2>
+            <p className="text-muted-foreground">
+              Fill out the form below and we'll get back to you within 24 hours
+            </p>
+          </div>
+
+          {submitted ? (
+            <div className="bg-gradient-to-r from-rose-100 to-purple-100 border border-rose-200 rounded-xl p-6 text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Send className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="mb-2">Thank You!</h3>
+              <p className="text-muted-foreground">
+                Your message has been sent successfully. We'll be in touch soon!
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-[#f3f3f5] rounded-xl border border-black/10 focus:outline-none focus:ring-2 focus:ring-rose-400 transition-all"
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-[#f3f3f5] rounded-xl border border-black/10 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="subject" className="block mb-2">
+                  Subject *
+                </label>
+                <select
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-[#f3f3f5] rounded-xl border border-black/10 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all"
+                >
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Customer Support</option>
+                  <option value="partnership">Partnership Opportunity</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block mb-2">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 bg-[#f3f3f5] rounded-xl border border-black/10 focus:outline-none focus:ring-2 focus:ring-rose-400 transition-all resize-none"
+                  placeholder="Tell us more about your inquiry..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-rose-600 to-purple-600 text-white py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 font-medium"
+              >
+                <Send className="w-5 h-5" />
+                Send Message
+              </button>
+            </form>
+          )}
         </div>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-foreground text-base mb-2">
-                Full Name *
-              </label>
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleInputChange}
-                placeholder="John Doe"
-                required
-                className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-foreground text-base mb-2">
-                Email Address *
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="john@example.com"
-                required
-                className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-            </div>
-          </div>
-          
-          <div>
-            <label className="block text-foreground text-base mb-2">
-              Subject *
-            </label>
-            <select
-              name="subject"
-              value={formData.subject}
-              onChange={handleInputChange}
-              required
-              className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              <option value="">Select a subject</option>
-              <option value="general">General Inquiry</option>
-              <option value="custom-order">Custom Order</option>
-              <option value="support">Support</option>
-              <option value="partnership">Partnership</option>
-            </select>
-          </div>
-          
-          <div>
-            <label className="block text-foreground text-base mb-2">
-              Message *
-            </label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              placeholder="Tell us more about your inquiry..."
-              required
-              rows={6}
-              className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-            />
-          </div>
-          
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-4 px-6 rounded-full flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <Send className="w-5 h-5" />
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </form>
       </div>
     </section>
   );
-};
+}
 
 export default ContactForm;

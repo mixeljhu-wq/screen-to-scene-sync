@@ -1,87 +1,72 @@
-import React from 'react';
 import { Mail, Phone, Instagram, Facebook } from 'lucide-react';
 
-interface ContactCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  contact: string;
-  contactColor: string;
-}
-
-const ContactCard: React.FC<ContactCardProps> = ({ icon, title, description, contact, contactColor }) => {
+export function ContactHero() {
   return (
-    <div className="bg-white/60 backdrop-blur-sm shadow-lg border border-white/40 flex flex-col p-6 rounded-2xl min-w-[320px]">
-      <div className="w-12 h-12 flex items-center justify-center bg-muted rounded-full">
-        {icon}
-      </div>
-      <h3 className="text-foreground text-base font-medium mt-4">{title}</h3>
-      <p className="text-muted-foreground text-base mt-2">{description}</p>
-      <a href="#" className={`text-base font-medium mt-3 ${contactColor} hover:underline`}>
-        {contact}
-      </a>
-    </div>
-  );
-};
-
-const SocialCard: React.FC = () => {
-  return (
-    <div className="bg-white/60 backdrop-blur-sm shadow-lg border border-white/40 flex flex-col p-6 rounded-2xl min-w-[320px]">
-      <div className="flex gap-3">
-        <div className="w-12 h-12 flex items-center justify-center bg-muted rounded-full">
-          <Instagram className="w-6 h-6" />
+    <section className="px-6 py-16 md:py-24">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="mb-4">Get in Touch</h1>
+          <p className="max-w-2xl mx-auto text-muted-foreground">
+            Have a question or want to work together? We'd love to hear from you.
+            Send us a message and we'll respond as soon as possible.
+          </p>
         </div>
-        <div className="w-12 h-12 flex items-center justify-center bg-muted rounded-full">
-          <Facebook className="w-6 h-6" />
-        </div>
-      </div>
-      <h3 className="text-foreground text-base font-medium mt-4">Follow Us</h3>
-      <p className="text-muted-foreground text-base mt-2">Connect with us on social media</p>
-      <div className="flex flex-col gap-2 mt-4">
-        <a href="#" className="flex items-center gap-2 text-[hsl(var(--brand-purple))] hover:underline">
-          <Instagram className="w-4 h-4" />
-          <span>@engravedmoments</span>
-        </a>
-        <a href="#" className="flex items-center gap-2 text-[hsl(var(--brand-red))] hover:underline">
-          <Facebook className="w-4 h-4" />
-          <span>Engraved Moments</span>
-        </a>
-      </div>
-    </div>
-  );
-};
 
-const ContactHero: React.FC = () => {
-  return (
-    <section className="w-full max-w-[1024px] mx-auto px-6 mt-20">
-      <div className="text-center mb-12">
-        <h1 className="text-foreground text-base font-medium">Get in Touch</h1>
-        <p className="text-muted-foreground text-base leading-6 mt-4 max-w-xl mx-auto">
-          Have a question or want to work together? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-        </p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <ContactCard
-          icon={<Mail className="w-6 h-6" />}
-          title="Email Us"
-          description="Send us an email anytime"
-          contact="hello@example.com"
-          contactColor="text-[hsl(var(--brand-red))]"
-        />
-        
-        <ContactCard
-          icon={<Phone className="w-6 h-6" />}
-          title="Call Us"
-          description="Mon-Fri from 8am to 5pm"
-          contact="+1 (555) 123-4567"
-          contactColor="text-[hsl(var(--brand-orange))]"
-        />
-        
-        <SocialCard />
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center mb-4">
+              <Mail className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="mb-2">Email Us</h3>
+            <p className="text-muted-foreground mb-2">
+              Send us an email anytime
+            </p>
+            <a href="mailto:hello@example.com" className="text-rose-600 hover:text-rose-700 transition-colors">
+              hello@example.com
+            </a>
+          </div>
+
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mb-4">
+              <Phone className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="mb-2">Call Us</h3>
+            <p className="text-muted-foreground mb-2">
+              Mon-Fri from 8am to 5pm
+            </p>
+            <a href="tel:+15551234567" className="text-amber-600 hover:text-amber-700 transition-colors">
+              +1 (555) 123-4567
+            </a>
+          </div>
+
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/40 hover:shadow-xl transition-shadow">
+            <div className="flex gap-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-violet-500 rounded-full flex items-center justify-center">
+                <Instagram className="w-6 h-6 text-white" />
+              </div>
+              <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-purple-500 rounded-full flex items-center justify-center">
+                <Facebook className="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <h3 className="mb-2">Follow Us</h3>
+            <p className="text-muted-foreground mb-3">
+              Connect with us on social media
+            </p>
+            <div className="flex flex-col gap-2">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700 transition-colors flex items-center gap-2">
+                <Instagram className="w-4 h-4" />
+                @engravedmoments
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-rose-600 hover:text-rose-700 transition-colors flex items-center gap-2">
+                <Facebook className="w-4 h-4" />
+                Engraved Moments
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-};
+}
 
 export default ContactHero;
